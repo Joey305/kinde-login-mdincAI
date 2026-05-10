@@ -163,15 +163,11 @@ Branded error state if the auth flow encounters a problem.
 
 ---
 
-## Email Update Disclosure
+## Register Page Consent
 
-Because Mindful Diabetes AI may subscribe new account holders to educational updates, the sign-up page should clearly include language such as:
+The sign-up page should not show a marketing or offers opt-in during account creation. Keep the register and login pages consistent with the educational medical-information disclaimer:
 
-> By creating an account, you agree to receive Mindful Diabetes AI educational updates from Mindful Diabetes Inc. and LVQ Labs. You can unsubscribe at any time.
-
-Suggested marketing consent label inside Kinde:
-
-> Send me Mindful Diabetes AI educational updates, Alzheimer’s research explainers, product news, and community resources. I can unsubscribe at any time.
+> Mindful Diabetes AI provides educational information only and is not a substitute for professional medical advice.
 
 ---
 

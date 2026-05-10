@@ -24,9 +24,7 @@ https://mindfuldiabetes.ai
 
 In Kinde, update **Design → Page content → Sign up page**.
 
-Recommended marketing consent label:
-
-> Send me Mindful Diabetes AI educational updates, Alzheimer’s research explainers, product news, and community resources. I can unsubscribe at any time.
+Disable any optional marketing-consent checkbox on the sign-up page. The custom UI intentionally keeps the register and login pages consistent and does not ask users to opt in to offers during account creation.
 
 ## Custom UI connection
 

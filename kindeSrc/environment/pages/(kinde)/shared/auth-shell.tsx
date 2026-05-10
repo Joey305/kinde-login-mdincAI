@@ -41,7 +41,7 @@ function getCopy(variant: PageVariant, context: KindePageEvent["context"]): Copy
       panelTitle: context.widget?.content?.heading || "Create your account",
       panelDescription:
         context.widget?.content?.description ||
-        "Join Mindful Diabetes AI and receive educational updates you can unsubscribe from at any time.",
+        "Create your account to continue to Mindful Diabetes AI.",
       badge: "Mindful Diabetes Inc. × LVQ Labs",
     };
   }
@@ -449,6 +449,46 @@ function themeScript() {
   `;
 }
 
+function widgetCleanupScript() {
+  return `
+    (function(){
+      function hideMarketingConsent(){
+        var root = document.querySelector('.kinde-widget-wrap');
+        if (!root) return;
+        var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+        var nodes = [];
+        while (walker.nextNode()) nodes.push(walker.currentNode);
+        nodes.forEach(function(node){
+          var text = (node.nodeValue || '').replace(/\\s+/g, ' ').trim().toLowerCase();
+          if (!text || text.indexOf('send me offers') === -1) return;
+          var parent = node.parentElement;
+          if (!parent) return;
+          var row = parent.closest('label, fieldset, [data-kinde-control], [data-kinde-field], [class*="checkbox"], [class*="consent"]') || parent;
+          row.setAttribute('hidden', 'true');
+          row.setAttribute('aria-hidden', 'true');
+          row.style.display = 'none';
+        });
+      }
+
+      try {
+        function startMarketingConsentCleanup(){
+          hideMarketingConsent();
+          var observer = new MutationObserver(hideMarketingConsent);
+          observer.observe(document.body, { childList: true, subtree: true });
+          window.setTimeout(hideMarketingConsent, 300);
+          window.setTimeout(hideMarketingConsent, 1000);
+        }
+
+        if (document.body) {
+          startMarketingConsentCleanup();
+        } else {
+          document.addEventListener('DOMContentLoaded', startMarketingConsentCleanup, { once: true });
+        }
+      } catch(e) {}
+    })();
+  `;
+}
+
 function Shell({ event, variant }: { event: KindePageEvent; variant: PageVariant }) {
   const { context, request } = event;
   const copy = getCopy(variant, context);
@@ -478,6 +518,7 @@ function Shell({ event, variant }: { event: KindePageEvent; variant: PageVariant
         </style>
         <style nonce={getKindeNonce()}>{globalStyles()}</style>
         <script nonce={getKindeNonce()} dangerouslySetInnerHTML={{ __html: themeScript() }} />
+        <script nonce={getKindeNonce()} dangerouslySetInnerHTML={{ __html: widgetCleanupScript() }} />
       </head>
       <body>
         <div className="md-grid-overlay" />
@@ -539,15 +580,9 @@ function Shell({ event, variant }: { event: KindePageEvent; variant: PageVariant
 
                   <div className="kinde-widget-wrap">{getKindeWidget()}</div>
 
-                  {isRegister ? (
-                    <p className="auth-note">
-                      By creating an account, you agree to receive Mindful Diabetes AI educational updates from Mindful Diabetes Inc. and LVQ Labs. You can unsubscribe at any time.
-                    </p>
-                  ) : (
-                    <p className="auth-note">
-                      Mindful Diabetes AI provides educational information only and is not a substitute for professional medical advice.
-                    </p>
-                  )}
+                  <p className="auth-note">
+                    Mindful Diabetes AI provides educational information only and is not a substitute for professional medical advice.
+                  </p>
 
                   <p className="switch-link">
                     {isRegister ? (
