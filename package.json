@@ -1,0 +1,20 @@
+{
+  "name": "kinde-login-mdincai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Custom Kinde hosted auth UI for Mindful Diabetes AI powered by LVQ Labs.",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@kinde/infrastructure": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "typescript": "latest"
+  }
+}
