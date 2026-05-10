@@ -1,47 +1,238 @@
-# Kinde Login — Mindful Diabetes AI
+# Mindful Diabetes AI — Kinde Custom Auth UI
 
-Custom Kinde hosted authentication UI for **Mindful Diabetes AI**, powered by **LVQ Labs** and created with **Mindful Diabetes Inc.**
+<p align="center">
+  <img src="./docs/mdi-logo.png" alt="Mindful Diabetes Inc. logo" width="140" />
+</p>
 
-This repository is designed to be connected in Kinde under **Design → Custom code**. It customizes the Kinde-hosted auth pages around the secure Kinde widget while keeping Kinde responsible for OAuth, OTP, session security, callbacks, and all authentication mechanics.
+<h1 align="center">Mindful Diabetes AI</h1>
 
-## What this includes
+<p align="center">
+  A custom Kinde authentication experience for <strong>Mindful Diabetes AI</strong>, powered by <strong>LVQ Labs</strong> and created in partnership with <strong>Mindful Diabetes Inc.</strong>
+</p>
 
-- A polished co-branded auth shell for Kinde hosted pages
-- Dedicated templates for:
-  - `(login)` sign-in page
-  - `(register)` sign-up page
-  - `(default)` fallback for all other Kinde pages
-  - `(error)` fallback error styling
-- Built-in light/dark theme toggle using localStorage
-- Embedded optimized MDI and LVQ logos so no asset hosting is required
-- Clear Mailchimp/email update consent copy on sign-up
-- Kinde widget styling via Kinde design custom properties
+<p align="center">
+  <a href="https://mindfuldiabetes.ai">
+    <img src="https://img.shields.io/badge/Mindful%20Diabetes%20AI-mindfuldiabetes.ai-0f766e?style=for-the-badge&logo=vercel&logoColor=white" alt="Mindful Diabetes AI website" />
+  </a>
+  <a href="https://mindfuldiabetes.org">
+    <img src="https://img.shields.io/badge/Mindful%20Diabetes%20Inc.-mindfuldiabetes.org-064e3b?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Mindful Diabetes Inc. website" />
+  </a>
+</p>
 
-## Project structure
+<p align="center">
+  <a href="https://lvqlabs.com">
+    <img src="https://img.shields.io/badge/Powered%20by-LVQ%20Labs-111827?style=for-the-badge&logo=react&logoColor=61dafb" alt="LVQ Labs" />
+  </a>
+  <a href="https://jsmcoop.com">
+    <img src="https://img.shields.io/badge/Partner-JSM%20Cooperative-7c2d12?style=for-the-badge&logo=bookstack&logoColor=white" alt="JSM Cooperative" />
+  </a>
+</p>
+
+---
+
+## Overview
+
+This repository contains the custom hosted authentication UI for **Mindful Diabetes AI**, the JEIR-powered educational assistant focused on blood sugar, insulin resistance, Type 3 diabetes research concepts, Alzheimer’s disease education, and metabolic brain health.
+
+The goal of this repo is to replace the plain default Kinde auth experience with a branded, trustworthy, polished sign-in/sign-up interface that matches the main product at:
+
+**https://mindfuldiabetes.ai**
+
+This custom UI keeps Kinde as the secure authentication provider while giving the hosted login/register pages a Mindful Diabetes AI × LVQ Labs visual identity.
+
+---
+
+## Brand Positioning
+
+### Product
+
+**Mindful Diabetes AI**
+
+### Assistant
+
+**JEIR**
+
+### Core Message
+
+> Understand blood sugar. Protect the brain.
+
+### Co-branding
+
+- **Mindful Diabetes Inc.** — public health education, diabetes awareness, brain-health mission.
+- **LVQ Labs** — AI product development, scientific web tooling, product infrastructure.
+- **JSM Cooperative** — creative, publishing, and mission-aligned partner ecosystem.
+
+---
+
+## Connected Web Properties
+
+| Brand / Project | URL | Role |
+|---|---:|---|
+| Mindful Diabetes AI | https://mindfuldiabetes.ai | Main AI product |
+| Mindful Diabetes Inc. | https://mindfuldiabetes.org | Nonprofit/public health mission |
+| LVQ Labs | https://lvqlabs.com | Technology and AI product partner |
+| JSM Cooperative | https://jsmcoop.com | Partner ecosystem and publishing mission |
+
+---
+
+## What This Repo Controls
+
+This repo controls the custom UI for Kinde-hosted pages, including:
+
+- Sign-in page
+- Sign-up page
+- Default auth page fallback
+- Error page
+- Shared auth shell
+- Custom branding and theme styling
+- Light/dark mode presentation around the Kinde widget
+- Email update disclosure copy
+
+Kinde still controls the secure authentication mechanics, including:
+
+- OAuth
+- Email-code authentication
+- Session handling
+- Callback flow
+- Account creation
+- Verification
+- Security-sensitive auth logic
+
+---
+
+## Repository Structure
 
 ```txt
 kinde-login-mdincAI/
 ├── kinde.json
 ├── package.json
 ├── tsconfig.json
-├── kindeSrc/
-│   └── environment/
-│       └── pages/
-│           └── (kinde)/
-│               ├── shared/
-│               │   ├── auth-shell.tsx
-│               │   └── brand-assets.ts
-│               ├── (default)/page.tsx
-│               ├── (login)/page.tsx
-│               ├── (register)/page.tsx
-│               └── (error)/page.tsx
-└── docs/
-    ├── setup.md
-    ├── mdi-logo.png
-    └── lvq-logo.png
+├── README.md
+├── docs/
+│   ├── setup.md
+│   ├── mdi-logo.png
+│   └── lvq-logo.png
+└── kindeSrc/
+    └── environment/
+        └── pages/
+            └── (kinde)/
+                ├── shared/
+                │   ├── auth-shell.tsx
+                │   └── brand-assets.ts
+                ├── (default)/page.tsx
+                ├── (login)/page.tsx
+                ├── (register)/page.tsx
+                └── (error)/page.tsx
 ```
 
-## Push to GitHub
+---
+
+## Page Templates
+
+### `(login)/page.tsx`
+
+Custom sign-in page for returning users.
+
+Suggested experience:
+
+- “Welcome back to Mindful Diabetes AI”
+- LVQ Labs co-branding
+- JEIR educational positioning
+- Kinde sign-in widget
+- Link to create an account
+
+### `(register)/page.tsx`
+
+Custom sign-up page for new users.
+
+Suggested experience:
+
+- “Create your Mindful Diabetes AI account”
+- Benefits of using JEIR
+- Email updates disclosure
+- Kinde sign-up widget
+- Link back to sign in
+
+### `(default)/page.tsx`
+
+Fallback for Kinde auth routes that do not have a route-specific template.
+
+### `(error)/page.tsx`
+
+Branded error state if the auth flow encounters a problem.
+
+---
+
+## Email Update Disclosure
+
+Because Mindful Diabetes AI may subscribe new account holders to educational updates, the sign-up page should clearly include language such as:
+
+> By creating an account, you agree to receive Mindful Diabetes AI educational updates from Mindful Diabetes Inc. and LVQ Labs. You can unsubscribe at any time.
+
+Suggested marketing consent label inside Kinde:
+
+> Send me Mindful Diabetes AI educational updates, Alzheimer’s research explainers, product news, and community resources. I can unsubscribe at any time.
+
+---
+
+## Visual Direction
+
+This custom UI is designed to combine:
+
+### Mindful Diabetes Inc.
+
+- Trust
+- Health education
+- Warmth
+- Prevention
+- Community
+- Brain-health awareness
+
+### LVQ Labs
+
+- Premium AI product design
+- Dark-mode polish
+- Scientific tooling
+- Glassmorphism
+- Cyan/teal glow accents
+- Modern technical credibility
+
+### Design Principles
+
+- Clear
+- Calm
+- Trustworthy
+- Premium
+- Responsive
+- Accessible
+- Not overly clinical
+- Not generic
+- Not cluttered
+
+---
+
+## Local Development
+
+Install dependencies:
+
+```bash
+yarn install
+```
+
+Run checks if configured:
+
+```bash
+yarn lint
+npx tsc --noEmit
+```
+
+This repo is intended to be connected to Kinde’s custom UI system, not run as a standalone production app.
+
+---
+
+## GitHub Setup
+
+If you are creating this repo from scratch:
 
 ```bash
 echo "# kinde-login-mdincAI" >> README.md
@@ -53,18 +244,111 @@ git remote add origin https://github.com/Joey305/kinde-login-mdincAI.git
 git push -u origin main
 ```
 
-## Connect in Kinde
+---
 
-1. Open Kinde.
-2. Go to **Design → Custom code**.
-3. Connect this GitHub repository.
-4. Select the `main` branch.
-5. Make sure the root config is found through `kinde.json`.
-6. Preview in a non-production environment first.
-7. Deploy/apply to production after preview looks correct.
+## Kinde Setup
 
-## Notes
+In the Kinde dashboard:
 
-- Kinde custom UI pages are server-rendered; do not use React client hooks like `useEffect`.
-- The actual auth form is still the secure Kinde widget. This repo controls the page around it.
-- The sign-up page includes email update disclosure copy. Your Kinde page content can also set the marketing consent checkbox label.
+1. Go to **Design → Custom code**.
+2. Connect the GitHub repo:
+
+   ```txt
+   Joey305/kinde-login-mdincAI
+   ```
+
+3. Select branch:
+
+   ```txt
+   main
+   ```
+
+4. Preview the custom UI.
+5. Deploy/apply when the auth pages render correctly.
+
+---
+
+## Kinde Application Settings
+
+For local development of the main app:
+
+```txt
+Application homepage URI:
+http://localhost:3000
+
+Application login URI:
+http://localhost:3000/login
+
+Allowed callback URLs:
+http://localhost:3000/api/auth/kinde_callback
+
+Allowed logout redirect URLs:
+http://localhost:3000
+```
+
+For production:
+
+```txt
+Application homepage URI:
+https://mindfuldiabetes.ai
+
+Application login URI:
+https://mindfuldiabetes.ai/login
+
+Allowed callback URLs:
+https://mindfuldiabetes.ai/api/auth/kinde_callback
+
+Allowed logout redirect URLs:
+https://mindfuldiabetes.ai
+```
+
+---
+
+## Related Main App
+
+The main Mindful Diabetes AI application lives separately and handles:
+
+- Next.js application shell
+- JEIR assistant interface
+- OpenAI chat route
+- Kinde authentication routes
+- Mailchimp signup webhook
+- Production deployment on Vercel
+
+Production app:
+
+```txt
+https://mindfuldiabetes.ai
+```
+
+---
+
+## Partner Links
+
+- **Mindful Diabetes AI:** https://mindfuldiabetes.ai
+- **Mindful Diabetes Inc.:** https://mindfuldiabetes.org
+- **LVQ Labs:** https://lvqlabs.com
+- **JSM Cooperative:** https://jsmcoop.com
+
+---
+
+## Notes for Future Improvements
+
+Potential next upgrades:
+
+- Fully customized Kinde email templates
+- Better dark-mode illustration system
+- A dedicated JEIR avatar animation
+- Branded error recovery flows
+- More detailed onboarding copy
+- A/B testing for sign-up copy
+- Stronger consent segmentation for Mailchimp tags
+- Additional language support
+
+---
+
+## License / Usage
+
+This repository is intended for the Mindful Diabetes AI / LVQ Labs / Mindful Diabetes Inc. authentication experience.
+
+Do not reuse brand assets, logos, or copy without permission from the respective organizations.
