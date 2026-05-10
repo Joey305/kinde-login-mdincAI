@@ -416,14 +416,77 @@ function globalStyles() {
     }
 
     @media (max-width: 940px) {
-      .md-page { padding: 14px; }
-      .md-main { grid-template-columns: 1fr; padding: 26px 0; }
-      .hero-panel { padding: 10px; }
-      .micro-grid { grid-template-columns: 1fr; }
-      .auth-inner { padding: 20px; }
+      .md-page {
+        padding: 10px;
+        overflow: auto;
+      }
+
+      .md-shell {
+        min-height: calc(100vh - 20px);
+        grid-template-rows: auto 1fr;
+      }
+
+      .md-main {
+        display: block;
+        padding: 12px 0 0;
+      }
+
+      .hero-panel,
+      .micro-grid {
+        display: none;
+      }
+
+      .auth-card { border-radius: 24px; }
+      .auth-card::before { border-radius: 24px; }
+      .auth-inner { padding: 18px; }
+      .auth-top { margin-bottom: 18px; }
+      .logo-tile {
+        width: 40px;
+        height: 40px;
+        border-radius: 14px;
+      }
+      .panel-title { font-size: 26px; }
+      .panel-description {
+        font-size: 14px;
+        margin-bottom: 16px;
+      }
+      .kinde-widget-wrap {
+        border-radius: 20px;
+        padding: 14px;
+      }
+      .auth-note {
+        font-size: 11px;
+        padding: 12px;
+      }
       .md-footer { flex-direction: column; align-items: flex-start; }
       .md-nav { border-radius: 22px; }
       .brand-subtitle { display: none; }
+    }
+
+    @media (max-width: 520px) {
+      .md-nav {
+        padding: 9px;
+      }
+
+      .brand-mark {
+        width: 36px;
+        height: 36px;
+        border-radius: 12px;
+      }
+
+      .brand-title {
+        font-size: 14px;
+      }
+
+      .theme-toggle {
+        min-width: 38px;
+        padding: 7px 10px;
+      }
+
+      .secure-pill,
+      .md-footer {
+        display: none;
+      }
     }
   `;
 }
